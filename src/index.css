@@ -12,3 +12,19 @@ body {
   font-family: 'Zen Kaku Gothic New', Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
 }
+
+img {
+  width: 100%;
+}
+
+button + button {
+  margin-left: 6px;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 500;
+}
