@@ -14,7 +14,26 @@ function App() {
     const handleButtonClick = () => {
        return console.log(`event clicked`);
     }
+    function mostSold () {
+        inventory.sort ((a, b)=> {
+            return b.sold - a.sold;
+        });
+        console.log(inventory)
+    }
 
+    function cheapestFirst (){
+        inventory.sort((a,b)=> {
+            return a.price - b.price;
+        });
+        console.log(inventory)
+    }
+
+    function sportBest (){
+        inventory.sort((a,b) => {
+            return b.refreshRate - a.refreshRate;
+        });
+        console.log(inventory)
+    }
 
     return (
         <main className="page-container">
@@ -68,13 +87,13 @@ function App() {
             </section>
             <section>
                 <h2>Alle tvs</h2>
-                <button type="button" onClick={handleButtonClick}>
+                <button type="button" onClick={mostSold}>
                     Meest verkocht eerst
                 </button>
-                <button type="button" onClick={handleButtonClick}>
+                <button type="button" onClick={cheapestFirst}>
                     Goedkoopste eerst
                 </button>
-                <button type="button" onClick={handleButtonClick}>
+                <button type="button" onClick={sportBest}>
                     Meest geschikt voor sport eerst
                 </button>
 
