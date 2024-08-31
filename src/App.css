@@ -111,6 +111,10 @@ header {
     gap: 8px;
 }
 
+.option-list p {
+    color: red;
+}
+
 .option-list img {
     margin-right: 4px;
 }

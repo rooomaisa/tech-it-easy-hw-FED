@@ -8,8 +8,10 @@ import avalibleSizesTv from "./constants/helpers/avalibleSizesTv.js";
 import priceTv from "./constants/helpers/priceTv.js";
 import minus from './assets/minus.png';
 import check from './assets/check.png';
+import outofstock from './assets/out-of-stock.png';
 
 
+// i used before for the buttons
 function App() {
     const handleButtonClick = () => {
        return console.log(`event clicked`);
@@ -34,6 +36,21 @@ function App() {
         });
         console.log(inventory)
     }
+ // i learned here that i can use the math.max function to find the largest number in a set of numbers.  but because it doesnt work on arrays i need the spread operator ... to make a list of numbers and not a array. the function expects a list. but we have not learned this yes so i was curious how to solve that with other options.
+
+    function screenBigfirst (){
+        inventory.sort((a,b) => {
+        const maxSizeA = Math.max(...a.availableSizes);
+        const maxSizeB = Math.max(...b.availableSizes);
+        return maxSizeB - maxSizeA;
+        })
+        console.log(inventory);
+    }
+
+    function isSoldOut(tv) {
+        return calculateItemsNeedSell([tv]) === 0;
+    }
+
 
     return (
         <main className="page-container">
@@ -96,31 +113,44 @@ function App() {
                 <button type="button" onClick={sportBest}>
                     Meest geschikt voor sport eerst
                 </button>
+                <button type="button" onClick={screenBigfirst }>
+                    Grootste schermgroottes eerst
+                </button>
+
 
                 {inventory.map((tv) => {
+                    const soldOut= isSoldOut(tv);
                     return (
-                       <article className="product" key={tv.type}>
+                        <article className="product" key={tv.type}>
                            <span className="product-image">
                                <img src={tv.sourceImg} alt="afbeelding van product"/>
                            </span>
-                           <div className="product-info">
-                               <h3>{stringTv(tv)}</h3>
-                               <p className={"product-price"}>{priceTv(tv.price)}</p>
-                               <p>{avalibleSizesTv(tv.availableSizes)}</p>
-                               <ul className={"option-list"}>
-                                   {tv.options.map((option) => {
-                                   if (option.applicable === true){
-                                   return <li key={`${tv.type}-${option.name}`}><img src={check} alt="Icoon: aanwezig" className="icon"/>{option.name}
-                                   </li>
-                                   } else {
-                                       return <li key={`${tv.type}-${option.name}`}><img src={minus} alt="Icoon: aanwezig" className="icon"/>{option.name}
-                                       </li>
-                                   }
-                                   })}
-                               </ul>
-                           </div>
-                       </article>
-                    )})}
+                            <div className="product-info">
+                                <h3>{stringTv(tv)}</h3>
+                                <p className={"product-price"}>{priceTv(tv.price)}</p>
+                                <p>{avalibleSizesTv(tv.availableSizes)}</p>
+                                <ul className={"option-list"}>
+                                    {tv.options.map((option) => {
+                                        if (option.applicable === true) {
+                                            return <li key={`${tv.type}-${option.name}`}><img src={check} alt="Icoon: aanwezig" className="icon"/>{option.name}
+                                            </li>
+                                        } else {
+                                            return <li key={`${tv.type}-${option.name}`}><img src={minus} alt="Icoon: aanwezig" className="icon"/>{option.name}
+                                            </li>
+                                        }
+                                    })}
+                                </ul>
+                                {/*Short-circuit evaluation: This allows the right side of the && to be evaluated only if the left side is true*/}
+                                {soldOut && (
+                                    <div className="option-list">
+                                        <p>Sold Out</p>
+                                        <img src={outofstock} alt="Sold Out" className="icon"/>
+                                    </div>
+                                )}
+                            </div>
+                        </article>
+                    )
+                })}
             </section>
         </main>
     )
