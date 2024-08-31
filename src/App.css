@@ -95,6 +95,10 @@ header {
     width: 12px;
 }
 
+.icon2 {
+    width: 42px;
+}
+
 .product-image {
     max-width: 200px;
 }

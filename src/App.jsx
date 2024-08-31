@@ -11,11 +11,12 @@ import check from './assets/check.png';
 import outofstock from './assets/out-of-stock.png';
 
 
-// i used before for the buttons
+
 function App() {
-    const handleButtonClick = () => {
-       return console.log(`event clicked`);
-    }
+    // i used before for the buttons
+    // const handleButtonClick = () => {
+    //    return console.log(`event clicked`);
+    // }
     function mostSold () {
         inventory.sort ((a, b)=> {
             return b.sold - a.sold;
@@ -58,7 +59,7 @@ function App() {
                 <div className="menu">
                     <ul>
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">Tv's</a></li>
+                        <li><a href="#">Tvs</a></li>
                         <li><a href="#">New in</a></li>
                         <li><a href="#">Login</a></li>
                     </ul>
@@ -144,7 +145,7 @@ function App() {
                                 {soldOut && (
                                     <div className="option-list">
                                         <p>Sold Out</p>
-                                        <img src={outofstock} alt="Sold Out" className="icon"/>
+                                        <img src={outofstock} alt="Sold Out" className="icon2"/>
                                     </div>
                                 )}
                             </div>
