@@ -95,12 +95,16 @@ header {
     width: 12px;
 }
 
+.icon2 {
+    width: 42px;
+}
+
 .product-image {
     max-width: 200px;
 }
 
 .product-price {
-    font-size: 24px;
+    font-size: 26px;
 }
 
 .option-list {
@@ -109,6 +113,10 @@ header {
     display: flex;
     flex-direction: row;
     gap: 8px;
+}
+
+.option-list p {
+    color: red;
 }
 
 .option-list img {
