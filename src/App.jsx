@@ -9,6 +9,8 @@ import priceTv from "./constants/helpers/priceTv.js";
 import minus from './assets/minus.png';
 import check from './assets/check.png';
 import outofstock from './assets/out-of-stock.png';
+import Tile from "./components/Tile.jsx";
+import ProductTile from "./components/ProductTile.jsx";
 
 
 
@@ -69,39 +71,28 @@ function App() {
             <section>
                 <h2>Verkoopoverzicht</h2>
                 <div className="dashboard-container">
-                    <article className="dashboard-item items-sold">
-                        <h3>Aantal verkochte producten</h3>
-                        <h2>{calculateSoldProducts(inventory)}</h2>
-                    </article>
-                    <article className="dashboard-item items-original">
-                        <h3>Aantal ingekochte producten</h3>
-                        <h2>{calculateStockProducts(inventory)}</h2>
-                    </article>
-                    <article className="dashboard-item items-to-sell">
-                        <h3>Aantal te verkopen producten</h3>
-                        <h2>{calculateItemsNeedSell(inventory)}</h2>
-                    </article>
+
+                    <Tile title={"Aantal verkochte producten"}
+                          number={calculateSoldProducts(inventory)}
+                          color={"green"}/>
+                    <Tile title={"Aantal ingekochte producten"}
+                          number={calculateStockProducts(inventory)}
+                          color={"blue"}/>
+                    <Tile title={"Aantal te verkopen producten"}
+                          number={calculateItemsNeedSell(inventory)}
+                          color={"red"}/>
                 </div>
             </section>
             <section className="best-seller-container">
                 <h2>Best verkochte tv</h2>
-                <article className="product product-best-seller">
-                    <span className="product-image">
-                        <img src={bestSellingTv.sourceImg} alt="Afbeelding van het product"/>
-                    </span>
-                    <div className="product-info">
-                        <h3>{stringTv(bestSellingTv)}</h3>
-                        <p className="product-price">{priceTv(bestSellingTv.price)}</p>
-                        <p>{avalibleSizesTv(bestSellingTv.availableSizes)}</p>
-                        <ul className="option-list">
-                            <li><img src={check} alt={"check"} className={"icon"} />wifi</li>
-                            <li><img src={minus} alt={"check"} className={"icon"} />speech</li>
-                            <li><img src={check} alt={"check"} className={"icon"} />hdr</li>
-                            <li><img src={check} alt={"check"} className={"icon"} />bluetooth</li>
-                            <li><img src={minus} alt={"check"} className={"icon"} />ambilight</li>
-                        </ul>
-                    </div>
-                </article>
+                <ProductTile
+                    img={bestSellingTv.sourceImg}
+                    altImg={"Afbeelding van het product"}
+                    stringTiletv={stringTv(bestSellingTv)}
+                    priceTvTile={priceTv(bestSellingTv.price)}
+                    avalibleSizesTileTv={avalibleSizesTv(bestSellingTv.availableSizes) }
+                />
+
             </section>
             <section>
                 <h2>Alle tvs</h2>
