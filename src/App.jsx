@@ -91,6 +91,8 @@ function App() {
                     stringTiletv={stringTv(bestSellingTv)}
                     priceTvTile={priceTv(bestSellingTv.price)}
                     avalibleSizesTileTv={avalibleSizesTv(bestSellingTv.availableSizes) }
+                    listImg={check}
+                    altListImg={"check"}
                 />
 
             </section>
